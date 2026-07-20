@@ -1,5 +1,4 @@
 import cv2
-import math
 import librosa
 import numpy as np
 import mediapipe as mp
@@ -8,10 +7,7 @@ import sounddevice as sd
 from mediapipe.tasks.python.vision import drawing_utils
 from mediapipe.tasks.python.vision import drawing_styles
 from mediapipe.tasks.python import vision
-from mediapipe.tasks import python
-from collections import deque
 from velocity import Velocity
-# Note: Your camera setup and while loop remain exactly the same up to the detector
 
 
 
@@ -49,9 +45,6 @@ frame_height = int(cam.get(cv2.CAP_PROP_FRAME_HEIGHT))
 rgb = np.empty((frame_height, frame_width, 3), dtype=np.uint8)  # reuse
 
 
-
-framerate = cam.get(cv2.CAP_PROP_FPS)
-
 class S:
     pos = 0
     note =0
@@ -74,7 +67,7 @@ scratch = np.empty(BLOCK, dtype=np.float32)
 ramp    = np.linspace(0, 1, BLOCK, dtype=np.float32)
 def callback(outdata, frames, t, status):
     if status:
-        S.underruns += 1
+        S.underrun += 1
 
     end = S.pos + BLOCK
 
@@ -123,7 +116,7 @@ with sd.OutputStream(samplerate=SR, blocksize=BLOCK, channels=1,
         if res := detection_result.pose_landmarks:
             rw, lw = res[0][16], res[0][15]
             if rw.visibility < 0.5:              # ← model says it can't actually see it
-                right.reset()
+                right.reset(); left.reset()
                 ctrl[0] += 0.3 * (BASE - ctrl[0])
             else:
                 r_wrist_x, r_wrist_y = rw.x * frame_width, rw.y * frame_height
