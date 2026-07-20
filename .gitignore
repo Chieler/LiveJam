@@ -1,0 +1,6 @@
+.env
+venv/
+.vscode/
+.DS_Store
+video.ipynb
+__pycache__/
