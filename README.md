@@ -63,7 +63,7 @@ python hand_gestures.py     # press 'q' in the camera window to quit
 > **Note:** the stem path in `hand_gestures.py` is currently hard-coded to the
 > AC/DC sample track. Point it at your own separated stem to jam to a different song.
 
-##Demo
+## Demo
 
 
 
