@@ -6,6 +6,12 @@ the guitar swells; hold still and it settles back to a quiet baseline. The audio
 gated to the track's own note onsets, so your gestures feel like they're driving the
 performance instead of just riding a volume fader.
 
+## Demo
+
+
+https://github.com/user-attachments/assets/91358fab-e549-4292-8104-a57415433ff3
+
+
 ## How it works
 
 ```
@@ -62,14 +68,6 @@ python hand_gestures.py     # press 'q' in the camera window to quit
 
 > **Note:** the stem path in `hand_gestures.py` is currently hard-coded to the
 > AC/DC sample track. Point it at your own separated stem to jam to a different song.
-
-## Demo
-
-
-
-
-https://github.com/user-attachments/assets/91358fab-e549-4292-8104-a57415433ff3
-
 
 
 ## Repo layout
